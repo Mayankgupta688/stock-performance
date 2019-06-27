@@ -1,11 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
-import * as actions from "../actions";
 import CompanyDetails from "./companyDetails";
 import AddCompany from "./addCompany";
 import { Route, Switch } from "react-router-dom";
 import "../styles/App.css";
-class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
 
@@ -16,11 +14,3 @@ class App extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-    return {
-      company: state.company
-    }
-}
-
-export default connect(mapStateToProps, actions)(App);

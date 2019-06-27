@@ -4,21 +4,23 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from 'redux';
 import { rootReducer } from "./reducers";
 import thunk from "redux-thunk";
+import { BrowserRouter } from "react-router-dom";
 
-import { loadEmployeeData, loadMoviesData} from "./actions/index";
+import { loadCompanyData} from "./actions/index";
 
 import App from "./components/app";
 
 var createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 var store = createStoreWithMiddleware(rootReducer);
 
-store.dispatch(loadEmployeeData());
-store.dispatch(loadMoviesData());
+store.dispatch(loadCompanyData());
 
 ReactDOM.render((
+    <BrowserRouter>
         <Provider store={store}>
             <App />
         </Provider>
+    </BrowserRouter>
     ), 
     document.getElementById("root")
 );

@@ -1,12 +1,5 @@
 import axios from "axios";
 
-export function movieList(movieList) {
-    return {
-        type: "MOVIE_LIST",
-        payload: movieList
-    }
-}
-
 export function employeeList(employees) {
     return {
         type: "EMPLOYEE_LIST",
@@ -14,26 +7,19 @@ export function employeeList(employees) {
     }
 }
 
-export function loadEmployeeData() {
-    return function(dispatch) {
-        return axios.get("http://5c055de56b84ee00137d25a0.mockapi.io/api/v1/employees").then(response => {
-            dispatch(employeeList(response.data))
-        })
-    }
-}
-
-export function loadMoviesData() {
-    return function(dispatch) {
-        return axios.get("http://5c055de56b84ee00137d25a0.mockapi.io/api/v1/employees").then(response => {
-            dispatch(movieList(response.data))
-        })
-    }
-}
-
-export function deleteEmployee(id) {
+export function companyList(companies) {
     return {
-        type: "DELETE_EMPLOYEE_LIST",
-        employeeId: id
+        type: "COMPANY_DETAILS",
+        payload: companies
+    }
+}
+
+
+export function loadCompanyData() {
+    return function(dispatch) {
+        return axios.get("https://9670e73hjj.execute-api.ap-south-1.amazonaws.com/dev/companies").then(response => {
+            dispatch(companyList(response.data))
+        })
     }
 }
 

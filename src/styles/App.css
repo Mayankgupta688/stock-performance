@@ -1,0 +1,74 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .company-details {
+    overflow: hidden;
+    overflow-y: auto;
+    height: 80px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .company-details-addition {
+    height: 50px;
+      width: 50px;
+      border: 1px dashed grey;
+      padding-left: 15px;
+      font-size: 30px;
+      border-radius: 50%;
+  }
+  
+  .canvas-data {
+    background-color: '#eee'
+  }
+  
+  .company-details-container {
+    padding-top: 5px;
+    flex-grow: 1;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 2px;
+    border: 1px solid #f1f1f1;
+  }
+  
+  .days-for-data {
+    width: 250px;
+  }
+  
+  .days-selection {
+    width: 300px;
+  }
+  

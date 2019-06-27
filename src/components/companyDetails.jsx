@@ -102,7 +102,6 @@ class CompanyDetails extends React.Component {
   }
 
   changeGraphData = (event, index, company) => {
-    debugger;
     let companyDetailsUpdated = [];
     for(let i = 0; i< this.state.chartData.length; i++) {
       if(i !== index) {
@@ -129,6 +128,21 @@ class CompanyDetails extends React.Component {
     })
   }
 
+  componentDidMount() {
+      if(this.props.company) {
+        this.setState({
+            chartData: this.props.company.slice(0, 4),
+            companyMasterList: this.props.company
+          }, () => {
+            this.updateDayCount(7)
+          })
+      }
+  }
+
+  addCompanyData = () => {
+    this.props.history.push('/addcompany')
+  }
+
   render() {
     if(this.chartRef.current) {
       this.updateDayCount();
@@ -138,12 +152,17 @@ class CompanyDetails extends React.Component {
     return (
       <div className="container-fluid">
         <nav className="navbar navbar-light bg-light" style={{"marginBottom": "10px"}}>
-          <span className="navbar-brand mb-0 h1">Stock Performance</span>
-          <select className="mr-sm-2 days-selection" value={this.state.selectedDays} onChange={this.updateDayCountValue}>
-            <option value="7">Performance for 7 Days</option>
-            <option value="15">Performance for 15 Days</option>
-            <option value="30">Performance for 30 Days</option>
-          </select>
+            <span className="navbar-brand mb-0 h1">Stock Performance</span>
+            <ul className="navbar-nav">
+                <li className="nav-item active">
+                    <button className="nav-link" onClick={this.addCompanyData}>Add More Company <span className="sr-only">(current)</span></button>
+                </li>
+            </ul>
+            <select className="mr-sm-2 days-selection" value={this.state.selectedDays} onChange={this.updateDayCountValue}>
+                <option value="7">Performance for 7 Days</option>
+                <option value="15">Performance for 15 Days</option>
+                <option value="30">Performance for 30 Days</option>
+            </select>
         </nav>
 
         <div className="row">
@@ -153,7 +172,6 @@ class CompanyDetails extends React.Component {
               <div className="col-3" key={index}>
                 <div className="company-details-container">
                   <select className="custom-select mr-sm-2" value={company.companyName} id="inlineFormCustomSelect" style={{marginBottom: "15px"}} onChange={(event) => this.changeGraphData(event, index, company)}>
-                    <option>Select Company..</option>
                     {this.returnDropDown()}
                   </select>
                   <div className="company-details">

@@ -2,7 +2,35 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-function AddCompany() {
+function AddCompany(props) {
+
+    const [companyName, setCompanyName] = useState("");
+    const [companyDescription, setCompanyDescription] = useState("");
+
+    var handleInputChanges = (event) => {
+        if(event.target.id === 'companyName') {
+            setCompanyName(event.target.value)
+        } else {
+            setCompanyDescription(event.target.value);
+        }
+    }
+
+    var addCompanyData = () => {
+
+        var performanceData = [];
+
+        for(let i=0; i< 30; i++) {
+            performanceData.push(Math.floor(Math.random() * 29))
+        }
+
+        props.addToCompanyList({
+            companyName: companyName,
+            label: companyName,
+            data: performanceData,
+            companyDetails: companyDescription
+        });
+        props.history.push('/')
+    }
 
     return (
         <div>
@@ -14,13 +42,14 @@ function AddCompany() {
             
             <div style={{"marginLeft": "40px", "marginTop": "10px"}}>
                 <div class="form-group">
-                    <label for="usr">Company Name:</label>
-                    <input type="text" class="form-control" id="usr" />
+                    <label htmlFor="usr">Company Name:</label>
+                    <input type="text" value={companyName} onChange={handleInputChanges} className="form-control" id="companyName" />
                 </div>
                 <div class="form-group">
-                    <label for="description">Add Company Description</label>
-                    <input type="textarea"  class="form-control" id="description" />
+                    <label htmlFor="description">Add Company Description</label>
+                    <input type="textarea" value={companyDescription} onChange={handleInputChanges}  className="form-control" id="companyDescription" />
                 </div>
+                <button type="button" onClick={addCompanyData} class="btn btn-primary">Add Company</button>
             </div>
         </div>
     )

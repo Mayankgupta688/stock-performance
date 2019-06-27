@@ -14,6 +14,13 @@ export function companyList(companies) {
     }
 }
 
+export function addToCompanyList(companyData) {
+    return {
+        type: "ADD_COMPANY",
+        payload: companyData
+    }
+}
+
 
 export function loadCompanyData() {
     return function(dispatch) {

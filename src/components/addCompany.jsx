@@ -6,6 +6,8 @@ function AddCompany(props) {
 
     const [companyName, setCompanyName] = useState("");
     const [companyDescription, setCompanyDescription] = useState("");
+    const [companyPerformanceStats, setCompanyPerformanceStats] = useState("");
+    const [performanceData, setPerformanceData] = useState([]);
 
     var handleInputChanges = (event) => {
         if(event.target.id === 'companyName') {
@@ -15,12 +17,32 @@ function AddCompany(props) {
         }
     }
 
-    var addCompanyData = () => {
+    var generateCompanyData = () => {
 
-        var performanceData = [];
+        if(companyName === "") {
+            alert("Add Company Name to Generate Data..");
+            return;
+        }
+
+        var samplePerformanceData = [];
 
         for(let i=0; i< 30; i++) {
-            performanceData.push(Math.floor(Math.random() * 29))
+            samplePerformanceData.push(Math.floor(Math.random() * 29))
+        }
+
+        setCompanyPerformanceStats(samplePerformanceData.join(', '))
+        setPerformanceData(samplePerformanceData);
+    }
+
+    var addCompanyData = () => {
+
+        if(companyName === "" || companyDescription === "") {
+            alert("Company Name or Description cannot be left blank..");
+            return;
+        }
+
+        if(companyPerformanceStats.length === 0) {
+            generateCompanyData();
         }
 
         props.addToCompanyList({
@@ -29,6 +51,7 @@ function AddCompany(props) {
             data: performanceData,
             companyDetails: companyDescription
         });
+
         props.history.push('/')
     }
 
@@ -40,16 +63,26 @@ function AddCompany(props) {
                 </nav>
             </div>
             
-            <div style={{"marginLeft": "40px", "marginTop": "10px"}}>
-                <div class="form-group">
+            <div style={{"marginLeft": "40px", "marginTop": "10px", "marginRight": "40px"}}>
+                <div className="form-group">
                     <label htmlFor="usr">Company Name:</label>
                     <input type="text" value={companyName} onChange={handleInputChanges} className="form-control" id="companyName" />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label htmlFor="description">Add Company Description</label>
                     <input type="textarea" value={companyDescription} onChange={handleInputChanges}  className="form-control" id="companyDescription" />
                 </div>
-                <button type="button" onClick={addCompanyData} class="btn btn-primary">Add Company</button>
+                
+                {companyPerformanceStats.length > 0 && 
+                    (
+                    <div className="form-group">
+                        <label htmlFor="description">Company Data</label>
+                        <input disabled type="textarea" value={companyPerformanceStats} onChange={handleInputChanges}  className="form-control" id="companyDescription" />
+                    </div>
+                    )
+                }
+                <button type="button" style={{"marginRight": "10px"}} onClick={addCompanyData} className="btn btn-primary">Add Company</button>
+                <button type="button" onClick={generateCompanyData} className="btn btn-primary">View Performance Data</button>
             </div>
         </div>
     )

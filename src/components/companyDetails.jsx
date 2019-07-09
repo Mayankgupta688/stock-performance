@@ -88,7 +88,7 @@ class CompanyDetails extends React.Component {
           yAxes: [{
             scaleLabel: {
               display: true,
-              labelString: "Performance Graph"
+              labelString: "Performance"
             }, ticks: {
                 reverse: false
             }
@@ -166,16 +166,16 @@ class CompanyDetails extends React.Component {
       <div className="container-fluid">
         <nav className="navbar navbar-light bg-light" style={{"marginBottom": "10px"}}>
             <span className="navbar-brand mb-0 h1">Stock Performance</span>
-            <ul className="navbar-nav">
-                <li className="nav-item active">
-                    <button className="nav-link" onClick={this.addCompanyData}>Add More Company <span className="sr-only">(current)</span></button>
-                </li>
-            </ul>
-            <select className="mr-sm-2 days-selection" value={this.state.selectedDays} onChange={this.updateDayCountValue}>
+            <select className="performance-select-element mr-sm-2 days-selection browser-default custom-select" value={this.state.selectedDays} onChange={this.updateDayCountValue}>
                 <option value="7">Performance for 7 Days</option>
                 <option value="15">Performance for 15 Days</option>
                 <option value="30">Performance for 30 Days</option>
             </select>
+            <ul className="navbar-nav">
+                <li className="nav-item active">
+                  <button type="button" style={{"marginRight": "10px"}} onClick={this.addCompanyData} className="btn btn-primary">Add Company</button>
+                </li>
+            </ul>
         </nav>
 
         <div className="row">

@@ -18,7 +18,10 @@ Following is the Technical Stack for the Application
 4. React Hooks
 5. Application Hosted on EBS
 6. AWS Gateway API to fetch Data from AWS Lambda
-
+7. Thunk
+8. Chart.js
+9. Axios
+10. React-Redux
 
 ## Available Scripts
 

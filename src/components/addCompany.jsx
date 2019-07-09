@@ -4,6 +4,8 @@ import * as actions from "../actions";
 
 function AddCompany(props) {
 
+    //Application is using Hooks to define the state variable for the Component
+
     const [companyName, setCompanyName] = useState("");
     const [companyDescription, setCompanyDescription] = useState("");
     const [companyPerformanceStats, setCompanyPerformanceStats] = useState("");
@@ -31,10 +33,15 @@ function AddCompany(props) {
         }
 
         setCompanyPerformanceStats(samplePerformanceData.join(', '))
+
+        // Set the Performance data for the new company to be added..
+
         setPerformanceData(samplePerformanceData);
     }
 
     var addCompanyData = () => {
+
+        // Validation for adding the company. Description and Name cannot be left blank.
 
         if(companyName === "" || companyDescription === "") {
             alert("Company Name or Description cannot be left blank..");
@@ -93,5 +100,7 @@ function mapStateToProps(state) {
       company: state.company
     }
 }
+
+// Redux connector to connect Props and Action to the Component
 
 export default connect(mapStateToProps, actions)(AddCompany);

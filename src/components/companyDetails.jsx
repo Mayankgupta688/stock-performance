@@ -152,6 +152,8 @@ class CompanyDetails extends React.Component {
       }
   }
 
+  // Function to redirect application to "Add Company" Page
+
   addCompanyData = () => {
     this.props.history.push('/addcompany')
   }

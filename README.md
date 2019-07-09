@@ -1,4 +1,24 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Application Enables user to compare the performance of the Stocks of different Companies
+
+User is allowed to see the stock for last 7 Days, 15 Days and 30 Days
+
+Whenever User updates the company, the Graph is plotted again for the Application.
+
+It also enables user to add new company to the List of Companies Available in the drop down list.
+
+We can compare 4 Companies. We can further scale up the application by displaying more companies. 
+
+The Added Companies are not persisted in any database.
+
+Following is the Technical Stack for the Application
+
+1. React
+2. Redux
+3. React Routing
+4. React Hooks
+5. Application Hosted on EBS
+6. AWS Gateway API to fetch Data from AWS Lambda
+
 
 ## Available Scripts
 

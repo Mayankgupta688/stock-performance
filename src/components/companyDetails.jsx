@@ -79,10 +79,23 @@ class CompanyDetails extends React.Component {
         datasets: this.createDataset(this.state.chartData)
       },
       options: {
-      scales: {
-        yAxes: [{
-            ticks: {
-              reverse: false
+
+        title: {
+          display: true,
+          text: "Performance Analysis For the Companies"
+        },
+        scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: "Performance Graph"
+            }, ticks: {
+                reverse: false
+            }
+          }], xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: "Day Count"
             }
           }]
         }
@@ -166,6 +179,9 @@ class CompanyDetails extends React.Component {
         </nav>
 
         <div className="row">
+          <div className="col-lg-10">
+            <h6 style={{"margin": "10px"}}>Select Companies to Compare</h6>
+          </div>
 
           {this.state.chartData && this.state.chartData.map((company, index) => {
             return (
@@ -189,7 +205,7 @@ class CompanyDetails extends React.Component {
           <div className="col-lg-10">
             <canvas className="canvas-data" id="chartJSContainer" ref={this.chartRef} ></canvas>
           </div>
-        </div>
+        </div><br></br>
       </div>
       
     );
